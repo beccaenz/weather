@@ -1,3 +1,12 @@
+//goals
+// create a search
+// add in the full week with upated data
+//f or c option - create link
+
+
+//ideas
+// night theme when current location geo location is after a certain time
+
 // coded temperature
 let apiKey = "eb13a97a3a23c49ef779ad1af428c680";
 let city = "singapore";
@@ -51,3 +60,23 @@ function showCity(response) {
 axios.get(`${apiLink}&appid=${apiKey}`).then(showCity);
 
 // end coded city
+
+// geolocation
+
+function showCurrent(response) {
+  console.log();
+  let CurrentTemp = Math.round(response.data.main.temp);
+  let CurrentElement = document.querySelector("h4");
+  CurrentElement.innerHTML = `The temperature at your current position is ${CurrentTemp}`;
+}
+
+function showPosition(position) {
+  console.log(position);
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let apiLinkGeo = `https://api.openweathermap.org/data/2.5/find?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+}
+
+navigator.geolocation.getCurrentPosition(showPosition);
+
+// end geolocation
