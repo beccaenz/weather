@@ -1,4 +1,3 @@
-# Auto detect text files and perform LF normalization * text=auto
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,38 +13,38 @@
     />
     <link rel="stylesheet" href="src/style.css" />
 
-    <title>Weatherv1</title>
+    <title>Weather</title>
   </head>
   <body>
     <div id="container">
-      <h1><div id="city"></div></h1>
-      <ul>
-        <li>date: Friday 7pm</li>
-        <li>clear</li>
-      </ul>
-      <div class="row">
-        <div class="col-6">
-          <img
-            src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-            alt="sunny"
-          />
-          <div id="temperature"></div>
-        </div>
-
-        <div class="col-6">
+      <div class="weather-app">
+        <div class="overview">
+          <h1><div id="city"></div></h1>
+          <h4></h4>
+          <h5></h5>
           <ul>
-            <li>
-              <div id="humidityDisplay"></div>
-            </li>
-            <li>
-              <div id="wind"></div>
-            </li>
+            <span
+              >Last Updated:
+              <li id="date"></li
+            ></span>
+            <li id="descriptionWeather"></li>
           </ul>
-        </div>
-      </div>
-      <h4>hello</h4>
+          <form id="search-form">
+            <input
+              type="text"
+              placeholder="Search for City"
+              autocomplete="off"
+              autofocus="on"
+              id="search-text-input"
+            />
+            <input type="submit" value="search" />
+          </form>
+          <div class="row">
+            <div class="col-12">
+              <img src="" alt="sunny" id="icon" />
 
-      <a href="" class="btn btn-primary">click me</a>
+              <strong> <span id="searchTemp"> </span></strong>
+              <span><a href="#" id="unitsLink">| C </a></span>
 
       <a href="https://github.com/beccaenz/weather">
         <h3>https://github.com/beccaenz/weather</h3>

@@ -3,80 +3,112 @@
 // add in the full week with upated data
 //f or c option - create link
 
-
 //ideas
 // night theme when current location geo location is after a certain time
+// use spans instead of divs??
 
-// coded temperature
-let apiKey = "eb13a97a3a23c49ef779ad1af428c680";
-let city = "singapore";
-let apiLink = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial`;
+// need to get search engine, finish hw 4 and hw 5, icon working, geolocation??
 
-function showTemp(response) {
-  console.log(response.data);
-  let temperature = Math.round(response.data.main.temp);
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = `${temperature}°F`;
-}
+// moon cycles??
 
-axios.get(`${apiLink}&appid=${apiKey}`).then(showTemp);
-// end coded temperature
+//watch hw 5 solution
 
-//coded humidity
+//if statement for the current temperature vs searched temp
 
-function showHumidity(response) {
-  console.log(response.data);
-  let humidityDisplay = Math.round(response.data.main.humidity);
+//search form
+function displayWeather(response) {
+  let tempElement = document.querySelector("#searchTemp");
   let humidityElement = document.querySelector("#humidityDisplay");
-  humidityElement.innerHTML = `${humidityDisplay}%`;
-}
-
-axios.get(`${apiLink}&appid=${apiKey}`).then(showHumidity);
-
-// end coded humidity
-
-// coded wind
-
-function showWind(response) {
-  console.log(response.data);
-  let wind = Math.round(response.data.wind.speed);
   let windElement = document.querySelector("#wind");
-  windElement.innerHTML = `${wind}%`;
-}
-
-axios.get(`${apiLink}&appid=${apiKey}`).then(showWind);
-
-// end coded wind
-
-// coded city
-
-function showCity(response) {
-  console.log(response.data);
-  let city = response.data.name;
+  let iconElement = document.querySelector("#icon");
+  let descriptionWeatherElement = document.querySelector("#descriptionWeather");
   let cityElement = document.querySelector("#city");
-  cityElement.innerHTML = `${city}`;
+
+  temperature = response.data.main.temp;
+
+  tempElement.innerHTML = Math.round(temperature);
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  descriptionWeatherElement.innerHTML = response.data.weather[0].description;
+  cityElement.innerHTML = response.data.name;
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-axios.get(`${apiLink}&appid=${apiKey}`).then(showCity);
+function search(city) {
+  let apiKey = "eb13a97a3a23c49ef779ad1af428c680";
+  let apiLink = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  axios.get(apiLink).then(displayWeather);
+}
 
-// end coded city
+function submitTemp(event) {
+  event.preventDefault();
+  let cityElement = document.querySelector("#search-text-input");
+  search(cityElement.value);
+}
 
-// geolocation
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", submitTemp);
 
-function showCurrent(response) {
-  console.log();
-  let CurrentTemp = Math.round(response.data.main.temp);
-  let CurrentElement = document.querySelector("h4");
-  CurrentElement.innerHTML = `The temperature at your current position is ${CurrentTemp}`;
+// geo location
+function showTempGeo(response) {
+  let tempGeo = Math.round(response.data.main.temp);
+  let h5 = document.querySelector("h5");
+  h5.innerHTML = `The temp of your current location is ${tempGeo}... creepy`;
 }
 
 function showPosition(position) {
-  console.log(position);
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
-  let apiLinkGeo = `https://api.openweathermap.org/data/2.5/find?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  let apiKey = "eb13a97a3a23c49ef779ad1af428c680";
+  let h4 = document.querySelector("h4");
+  h4.innerHTML = `your latitude is ${latitude} and your longitude is ${longitude}`;
+  let apiUrlGeo = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=imperial`;
+
+  axios.get(apiUrlGeo).then(showTempGeo);
 }
 
-navigator.geolocation.getCurrentPosition(showPosition);
+function getCurrentPosition() {
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+let button = document.querySelector("button");
+button.addEventListener("click", getCurrentPosition);
 
-// end geolocation
+//geo
+
+//degree conversion
+
+//degree conversion
+
+//date
+let Now = new Date();
+let dateElement = document.querySelector("#date");
+let date = Now.getDate();
+let hour = Now.getHours();
+let minutes = Now.getMinutes();
+let year = Now.getFullYear();
+let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+let day = days[Now.getDay()];
+let months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+let month = months[Now.getMonth()];
+
+dateElement.innerHTML = `${day} ${month} ${date}, ${hour}:${minutes}, ${year}`;
+//date
+
+search("singapore");

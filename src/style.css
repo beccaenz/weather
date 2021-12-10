@@ -1,3 +1,25 @@
+body {
+  font-family: Google Sans, Roboto, arial, sans-serif !important;
+}
+
+.weather-app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  border: 2px solid #dadde1;
+  border-radius: 5px;
+}
+
 h1 {
-  color: red;
+  color: #202124;
+  font-size: 35px;
+  line-height: 26px;
+  font-weight: lighter;
+}
+
+li {
+  font-weight: 100;
+  margin: 0;
+  list-style: none;
+  font-size: 15px;
 }
