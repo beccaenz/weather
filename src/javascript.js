@@ -25,6 +25,7 @@ function displayWeather(response) {
   let cityElement = document.querySelector("#city");
 
   temperature = response.data.main.temp;
+  fahrenheitTemp = response.data.main.temp;
 
   tempElement.innerHTML = Math.round(temperature);
   humidityElement.innerHTML = response.data.main.humidity;
@@ -80,6 +81,30 @@ button.addEventListener("click", getCurrentPosition);
 //geo
 
 //degree conversion
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let searchTempElement = document.querySelector("#searchTemp");
+  fahrenheitBlueLink.classList.remove("activeLink");
+  celsiusBlueLink.classList.add("activeLink");
+  let celsiusTemp = (fahrenheitTemp - 32) * (5 / 9);
+  searchTempElement.innerHTML = Math.round(celsiusTemp);
+}
+
+function showfahrenheitTemp(event) {
+  event.preventDefault();
+  let searchTempElement = document.querySelector("#searchTemp");
+  fahrenheitBlueLink.classList.add("activeLink");
+  celsiusBlueLink.classList.remove("activeLink");
+  searchTempElement.innerHTML = Math.round(fahrenheitTemp);
+}
+
+let celsiusBlueLink = document.querySelector("#celsiusConversion");
+celsiusBlueLink.addEventListener("click", showCelsiusTemp);
+
+let fahrenheitBlueLink = document.querySelector("#fahrenheitConversion");
+fahrenheitBlueLink.addEventListener("click", showfahrenheitTemp);
+
+let fahrenheitTemp = null;
 
 //degree conversion
 
