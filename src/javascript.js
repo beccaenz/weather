@@ -15,6 +15,8 @@
 
 //if statement for the current temperature vs searched temp
 
+//pull country
+
 //search form
 function displayWeather(response) {
   let tempElement = document.querySelector("#searchTemp");

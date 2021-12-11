@@ -33,3 +33,18 @@ li {
 .weatherTempLink .activeLink:hover {
   text-decoration: none;
 }
+
+.forcast {
+  margin-top: 20px;
+  text-align: center;
+  color: black;
+}
+
+.forcast-date {
+  font-size: 15px;
+  opacity: 0.5;
+}
+
+.forcast-temp {
+  opacity: 0.5;
+}
