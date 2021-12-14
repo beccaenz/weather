@@ -138,4 +138,41 @@ let month = months[Now.getMonth()];
 dateElement.innerHTML = `${day} ${month} ${date}, ${hour}:${minutes}, ${year}`;
 //date
 
+//forecast
+
+function displayforcast() {
+  let forecastElement = document.querySelector("#forecastid");
+
+  let forecastHTML = `<div class="row">`;
+  let daysforecast = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+  daysforecast.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+ <div class = "col-1">
+   <div class="forecast-date">
+     ${day}
+     <div>
+       <img
+         src="http://openweathermap.org/img/wn/04d@2x.png"
+         alt="forecast-img"
+         width="40"
+       />
+     </div>
+     <div class="forecast-temp-high">
+       70°
+       <span class="forecast-temp-low"> 65° </span>
+       </div>
+    </div>
+   </div>
+ 
+ `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+//forecast
+
 search("singapore");
+displayforcast();

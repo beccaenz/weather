@@ -34,17 +34,17 @@ li {
   text-decoration: none;
 }
 
-.forcast {
+.forecast {
   margin-top: 20px;
   text-align: center;
   color: black;
 }
 
-.forcast-date {
+.forecast-date {
   font-size: 15px;
   opacity: 0.5;
 }
 
-.forcast-temp {
+.forecast-temp {
   opacity: 0.5;
 }
