@@ -15,7 +15,27 @@
 
 //if statement for the current temperature vs searched temp
 
-//pull country
+//country sys - sunrise and sunset
+
+//sunrise and sunset
+
+function getSunrise(response) {
+  console.log(response);
+  let getSunriseElement = document.querySelector("#getSunriseId");
+}
+
+//sunrise and sunset
+
+//forecast api - coordinates
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "eb13a97a3a23c49ef779ad1af428c680";
+  let apiUrl = `https://api.oenweathermap.org/data/2.5/onecall?lat${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayforcast);
+}
+
+//forecast api
 
 //search form
 function displayWeather(response) {
@@ -25,6 +45,7 @@ function displayWeather(response) {
   let iconElement = document.querySelector("#icon");
   let descriptionWeatherElement = document.querySelector("#descriptionWeather");
   let cityElement = document.querySelector("#city");
+  let countryElement = document.querySelector("#country");
 
   temperature = response.data.main.temp;
   fahrenheitTemp = response.data.main.temp;
@@ -39,6 +60,12 @@ function displayWeather(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  countryElement.innerHTML = response.data.sys.country;
+  console.log(response);
+
+  getForecast(response.data.coord);
+  getSunrise(response.data.sunrise);
+  getSunset(response.data.sunset);
 }
 
 function search(city) {
@@ -140,7 +167,8 @@ dateElement.innerHTML = `${day} ${month} ${date}, ${hour}:${minutes}, ${year}`;
 
 //forecast
 
-function displayforcast() {
+function displayforcast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecastid");
 
   let forecastHTML = `<div class="row">`;
@@ -175,4 +203,3 @@ function displayforcast() {
 //forecast
 
 search("singapore");
-displayforcast();
