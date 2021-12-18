@@ -165,6 +165,19 @@ let month = months[Now.getMonth()];
 dateElement.innerHTML = `${day} ${month} ${date}, ${hour}:${minutes}, ${year}`;
 //date
 
+//format daily forecast
+
+function formatDay(timestamp) {
+  let dateFormatted = new Date(timestamp * 10000);
+
+  let day = dateFormatted.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+//format daily forecast
+
 //forecast
 
 function displayforcast(response) {

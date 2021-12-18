@@ -20,6 +20,8 @@
       <div class="weather-app">
         <div class="overview">
           <h1><div id="city"></div></h1>
+          <span>Country: <span id="country"></span></span>
+          <div class="getSunriseId"></div>
           <h4></h4>
           <h5></h5>
           <ul>
@@ -51,7 +53,8 @@
                   | <a href="#" id="celsiusConversion">°C </a></span
                 >
               </span>
-              <div class="col-12">
+              
+              <div class="col-3">
                 <ul>
                   <li>
                     <span
@@ -66,13 +69,14 @@
                       <div id="wind"></div>
                       mph</span
                     >
+                    </div>
                   </li>
                 </ul>
+                <div class="col-7">
                 <div class="forecast" id="forecastid"></div>
-
+                </div>
                 <button>Current Location</button>
-              </div>
-            </div>
+                    
           </div>
         </div>
 
@@ -80,6 +84,7 @@
           <h3>https://github.com/beccaenz/weather</h3>
         </a>
       </div>
+    </div>
     </div>
     <script src="src/javascript.js"></script>
   </body>
