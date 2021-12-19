@@ -17,22 +17,14 @@
 
 //country sys - sunrise and sunset
 
-//sunrise and sunset
-
-function getSunrise(response) {
-  console.log(response);
-  let getSunriseElement = document.querySelector("#getSunriseId");
-}
-
-//sunrise and sunset
-
-//forecast api - coordinates
+//forecast api
 
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "eb13a97a3a23c49ef779ad1af428c680";
-  let apiUrl = `https://api.oenweathermap.org/data/2.5/onecall?lat${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayforcast);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+
+  axios.get(apiUrl).then(displayForecast);
 }
 
 //forecast api
@@ -62,10 +54,9 @@ function displayWeather(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
   countryElement.innerHTML = response.data.sys.country;
   console.log(response);
-
+  //log coordinates
   getForecast(response.data.coord);
-  getSunrise(response.data.sunrise);
-  getSunset(response.data.sunset);
+  //log coordinates
 }
 
 function search(city) {
@@ -168,7 +159,7 @@ dateElement.innerHTML = `${day} ${month} ${date}, ${hour}:${minutes}, ${year}`;
 //format daily forecast
 
 function formatDay(timestamp) {
-  let dateFormatted = new Date(timestamp * 10000);
+  let dateFormatted = new Date(timestamp * 1000);
 
   let day = dateFormatted.getDay();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -178,41 +169,57 @@ function formatDay(timestamp) {
 
 //format daily forecast
 
+
+
+
+
+
+
 //forecast
 
-function displayforcast(response) {
-  console.log(response.data.daily);
-  let forecastElement = document.querySelector("#forecastid");
+function displayForecast(response) {
+  let forecastDaily = response.data.daily;
+  forecastElement = document.querySelector("#forecastid");
+
+  //LOOP
 
   let forecastHTML = `<div class="row">`;
-  let daysforecast = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
-  daysforecast.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
- <div class = "col-1">
-   <div class="forecast-date">
-     ${day}
-     <div>
+
+  forecastDaily.forEach(function (dayforecast, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+
+<div class="col-1">
+<div class= "forecastDate"> ${formatDay(dayforecast.dt)}
        <img
-         src="http://openweathermap.org/img/wn/04d@2x.png"
+         src="http://openweathermap.org/img/wn/${
+           dayforecast.weather[0].icon
+         }@2x.png"
          alt="forecast-img"
-         width="40"
+         width="32"
        />
-     </div>
-     <div class="forecast-temp-high">
-       70°
-       <span class="forecast-temp-low"> 65° </span>
+     
+     <span class="forecast-temp-high">
+       ${Math.round(dayforecast.temp.max)}°
+       <span class="forecast-temp-low"> ${Math.round(
+         dayforecast.temp.min
+       )}° </span>
+       </span>
+
        </div>
     </div>
-   </div>
- 
- `;
+   </div>`;
+      forecastHTML = forecastHTML + `</div>`;
+      forecastElement.innerHTML = forecastHTML;
+    }
   });
-  forecastHTML = forecastHTML + `</div>`;
-  forecastElement.innerHTML = forecastHTML;
 }
-
 //forecast
+
+//sunset
+
+//sunset
 
 search("singapore");
