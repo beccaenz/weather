@@ -16,22 +16,24 @@
     <title>Weather App</title>
   </head>
   <body>
-    <div id="container">
+    <div id="container" class="box">
       <div class="weather-app">
         <div class="overview">
-          <h1><div id="city"></div></h1>
-          <span>Country: <span id="country"></span></span>
+          <span class="cityCountry">
+            <h1><div id="city"></div></h1>
+            <div class="countryFormat">Country: <span id="country"></span></div>
+          </span>
+          <div class="dateFormat">
+            Last Updated:
+            <span id="date"></span>
+          </div>
+
           <div class="getSunriseId"></div>
           <h4></h4>
           <h5></h5>
-          <ul>
-            <span
-              >Last Updated:
-              <li id="date"></li
-            ></span>
-            <li id="descriptionWeather"></li>
-          </ul>
-          <form id="search-form">
+        </div>
+        <div>
+          <form id="search-form" class="searhFormFormat">
             <input
               type="text"
               placeholder="Search for City"
@@ -41,9 +43,13 @@
             />
             <input type="submit" value="search" />
           </form>
-          <div class="row">
-            <div class="col-12">
-              <img src="" alt="sunny" id="icon" />
+        </div>
+        <div class="row">
+          <div class="wrapper">
+            <span class="IconTempFormat">
+              <div>
+                <img src="" alt="sunny" id="icon" />
+              </div>
               <span class="weatherTempLink">
                 <strong> <span id="searchTemp"> </span></strong>
                 <span class="units">
@@ -53,39 +59,36 @@
                   | <a href="#" id="celsiusConversion">°C </a></span
                 >
               </span>
-              
-              <div class="col-3">
-                <ul>
-                  <li>
-                    <span
-                      >Humidity:
-                      <span id="humidityDisplay"></span>
-                      %</span
-                    >
-                  </li>
-                  <li>
-                    <span>
-                      Wind Speed:
-                      <div id="wind"></div>
-                      mph</span
-                    >
-                    </div>
-                  </li>
-                </ul>
-                <div class="col-7">
-                <div class="forecast" id="forecastid"></div>
-                </div>
-                <button>Current Location</button>
-                    
+            </span>
+
+            <span class="infoFormat">
+              <span id="descriptionWeather" class="descriptionFormat"></span>
+
+              <div>
+                Humidity:
+                <span id="humidityDisplay"></span>
+                %
+              </div>
+
+              <div>
+                Wind Speed:
+                <span id="wind"></span>
+                mph
+              </div>
+            </span>
+          </div>
+          <div class="forematDatesForecast">
+            <div class="forecast" id="forecastid"></div>
           </div>
         </div>
-
-        <a href="https://github.com/beccaenz/weather">
-          <h3>https://github.com/beccaenz/weather</h3>
-        </a>
+        <button>Current Location</button>
       </div>
     </div>
-    </div>
+    <span class="linkFormat">
+    <a href="https://github.com/beccaenz/weather">
+      <span> <span>Open Source Code</span> 
+    </a>
+     by Becca Enzinna</span></span>
     <script src="src/javascript.js"></script>
   </body>
 </html>

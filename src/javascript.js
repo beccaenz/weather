@@ -169,12 +169,6 @@ function formatDay(timestamp) {
 
 //format daily forecast
 
-
-
-
-
-
-
 //forecast
 
 function displayForecast(response) {
@@ -183,7 +177,7 @@ function displayForecast(response) {
 
   //LOOP
 
-  let forecastHTML = `<div class="row">`;
+  let forecastHTML = `<div class = "row">`;
 
   forecastDaily.forEach(function (dayforecast, index) {
     if (index < 6) {
@@ -191,16 +185,18 @@ function displayForecast(response) {
         forecastHTML +
         `
 
-<div class="col-1">
+<div class ="col-2">
 <div class= "forecastDate"> ${formatDay(dayforecast.dt)}
-       <img
+       <div>
+      <img
          src="http://openweathermap.org/img/wn/${
            dayforecast.weather[0].icon
          }@2x.png"
          alt="forecast-img"
          width="32"
        />
-     
+       </div>
+     <div>
      <span class="forecast-temp-high">
        ${Math.round(dayforecast.temp.max)}°
        <span class="forecast-temp-low"> ${Math.round(
@@ -210,7 +206,7 @@ function displayForecast(response) {
 
        </div>
     </div>
-   </div>`;
+   `;
       forecastHTML = forecastHTML + `</div>`;
       forecastElement.innerHTML = forecastHTML;
     }

@@ -3,10 +3,10 @@ body {
 }
 
 .weather-app {
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 30px;
-  border: 2px solid #dadde1;
+  border: 3px solid #dadde1;
   border-radius: 5px;
 }
 
@@ -15,13 +15,6 @@ h1 {
   font-size: 35px;
   line-height: 26px;
   font-weight: lighter;
-}
-
-li {
-  font-weight: 100;
-  margin: 0;
-  list-style: none;
-  font-size: 15px;
 }
 
 .weatherTempLink .activeLink {
@@ -47,4 +40,97 @@ li {
 
 .forecast-temp {
   opacity: 0.5;
+}
+
+.overview {
+  text-align: left;
+}
+
+.cityCountry {
+  text-align: center;
+}
+
+.dateFormat {
+  text-align: center;
+}
+
+.infoFormat {
+  float: left;
+  padding-top: 40px;
+}
+
+.IconTempFormat {
+  text-align: right;
+  float: right;
+  font-size: 20px;
+}
+.descriptionFormat {
+  text-transform: capitalize;
+}
+
+.wapper {
+  padding: 30px;
+}
+
+.searhFormFormat {
+  padding-top: 15px;
+
+  text-align: left;
+}
+
+.forematDatesForecast {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding: 15px;
+}
+
+input {
+  border-radius: 5px;
+  border: 1px solid #1a64d6;
+  background: #1a64d6;
+  color: black;
+  font-size: 16px;
+  line-height: 22px;
+  transition: all 200ms ease;
+  box-shadow: rgba(37, 39, 89, 0.08) 0px 8px 8px 0;
+  cursor: pointer;
+  background: white;
+}
+
+input:hover {
+  background: white;
+  color: #1a64d6;
+  border: 1px solid #1a64d6;
+}
+
+placeholder {
+  color: white;
+}
+
+button {
+  border-radius: 25px;
+  border: 1px solid #1a64d6;
+  background: #1a64d6;
+  color: #fff;
+  font-size: 16px;
+  line-height: 22px;
+  transition: all 200ms ease;
+  box-shadow: rgba(37, 39, 89, 0.08) 0px 8px 8px 0;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  padding: 10px;
+}
+button:hover {
+  background: white;
+  color: #1a64d6;
+  border: 1px solid #1a64d6;
+}
+
+.linkFormat {
+  text-align: center;
+  font-size: 15px;
+  margin: 0 auto;
+  display: block;
 }
