@@ -47,6 +47,11 @@ h1 {
   text-align: left;
 }
 
+.cityFormat {
+  text-align: center;
+  font-size: 35px;
+  font-weight: bolder;
+}
 .cityCountry {
   text-align: center;
   font-size: 23px;
