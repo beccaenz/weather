@@ -1,5 +1,5 @@
 body {
-  font-family: Google Sans, Roboto, arial, sans-serif !important;
+  font-family: "Montserrat", sans-serif;
 }
 
 .weather-app {
@@ -8,6 +8,7 @@ body {
   padding: 30px;
   border: 3px solid #dadde1;
   border-radius: 5px;
+  text-decoration: none;
 }
 
 h1 {
@@ -60,9 +61,9 @@ h1 {
 }
 
 .IconTempFormat {
-  text-align: right;
+  text-decoration: none;
   float: right;
-  font-size: 20px;
+  font-size: 23px;
 }
 .descriptionFormat {
   text-transform: capitalize;
@@ -72,10 +73,11 @@ h1 {
   padding: 30px;
 }
 
-.searhFormFormat {
+.searchFormFormat {
   padding-top: 15px;
 
   text-align: left;
+  text-decoration: none;
 }
 
 .forematDatesForecast {
@@ -87,7 +89,7 @@ h1 {
 
 input {
   border-radius: 5px;
-  border: 1px solid #1a64d6;
+  border: 1px solid black;
   background: #1a64d6;
   color: black;
   font-size: 16px;
@@ -99,9 +101,8 @@ input {
 }
 
 input:hover {
-  background: white;
-  color: #1a64d6;
-  border: 1px solid #1a64d6;
+  color: black;
+  border: 1px solid;
 }
 
 placeholder {
@@ -133,4 +134,8 @@ button:hover {
   font-size: 15px;
   margin: 0 auto;
   display: block;
+}
+
+.forecast-temp-low {
+  opacity: 0.5;
 }

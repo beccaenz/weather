@@ -1,26 +1,4 @@
-//goals
-// create a search
-// add in the full week with upated data
-//f or c option - create link
-
-//ideas
-// night theme when current location geo location is after a certain time
-// use spans instead of divs??
-
-// need to get search engine, finish hw 4 and hw 5, icon working, geolocation??
-
-// moon cycles??
-
-//watch hw 5 solution
-
-//if statement for the current temperature vs searched temp
-
-//country sys - sunrise and sunset
-
-//forecast api
-
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "eb13a97a3a23c49ef779ad1af428c680";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
 
@@ -75,26 +53,21 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", submitTemp);
 
 // geo location
-function showTempGeo(response) {
-  let tempGeo = Math.round(response.data.main.temp);
-  let h5 = document.querySelector("h5");
-  h5.innerHTML = `The temp of your current location is ${tempGeo}... creepy`;
-}
 
 function showPosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let apiKey = "eb13a97a3a23c49ef779ad1af428c680";
-  let h4 = document.querySelector("h4");
-  h4.innerHTML = `your latitude is ${latitude} and your longitude is ${longitude}`;
+
   let apiUrlGeo = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=imperial`;
 
-  axios.get(apiUrlGeo).then(showTempGeo);
+  axios.get(apiUrlGeo).then(displayWeather);
 }
 
 function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
+
 let button = document.querySelector("button");
 button.addEventListener("click", getCurrentPosition);
 
@@ -129,11 +102,18 @@ let fahrenheitTemp = null;
 //degree conversion
 
 //date
+
 let Now = new Date();
 let dateElement = document.querySelector("#date");
 let date = Now.getDate();
 let hour = Now.getHours();
+if (hour < 10) {
+  hour = `0${hour}`;
+}
 let minutes = Now.getMinutes();
+if (minutes < 10) {
+  minutes = `0${minutes}`;
+}
 let year = Now.getFullYear();
 let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 let day = days[Now.getDay()];
@@ -153,7 +133,7 @@ let months = [
 ];
 let month = months[Now.getMonth()];
 
-dateElement.innerHTML = `${day} ${month} ${date}, ${hour}:${minutes}, ${year}`;
+dateElement.innerHTML = `${day}, ${month} ${date}, ${hour}:${minutes}, ${year}`;
 //date
 
 //format daily forecast
@@ -187,6 +167,9 @@ function displayForecast(response) {
 
 <div class ="col-2">
 <div class= "forecastDate"> ${formatDay(dayforecast.dt)}
+<div>
+
+</div>
        <div>
       <img
          src="http://openweathermap.org/img/wn/${
@@ -198,8 +181,8 @@ function displayForecast(response) {
        </div>
      <div>
      <span class="forecast-temp-high">
-       ${Math.round(dayforecast.temp.max)}°
-       <span class="forecast-temp-low"> ${Math.round(
+       ${Math.round(dayforecast.temp.max)}° 
+       <span class="forecast-temp-low"> /${Math.round(
          dayforecast.temp.min
        )}° </span>
        </span>
@@ -213,9 +196,5 @@ function displayForecast(response) {
   });
 }
 //forecast
-
-//sunset
-
-//sunset
 
 search("singapore");
